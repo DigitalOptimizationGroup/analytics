@@ -1,0 +1,36 @@
+{
+  "name": "@digitaloptgroup/analytics",
+  "version": "0.0.1-pre-release.4",
+  "description": "Analytics library for Digital Optimization Group's Headless A/B Testing CMS",
+  "repository": "https://github.com/DigitalOptGroup/analytics.git",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "jest --watch",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "webpack": "webpack"
+  },
+  "author": "Digital Optimization Group LLC",
+  "license": "MIT",
+  "dependencies": {
+    "intersection-observer": "^0.5.1",
+    "rxjs": "^6.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/jest": "^24.0.11",
+    "jest": "^24.7.1",
+    "mock-socket": "^8.0.5",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.11.0",
+    "typescript": "^3.4.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-bundle-analyzer": "^3.2.0"
+  },
+  "sideEffects": false,
+  "files": [
+    "/lib"
+  ]
+}
