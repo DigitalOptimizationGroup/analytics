@@ -53,7 +53,7 @@ export type Action =
 
 export const initTracker = (
   { projectId, vid, rid, startTimestamp, apiKey }: Config,
-  WS_FQDN = "wss://analytics.digitaloptgroup.com"
+  WS_FQDN = "wss://analytics.digitaloptgroup.com" // this should havea version - analytics-v1.digitaloptgroup.com
 ) => {
   // set up socket url
   const SOCKET_URL = `${WS_FQDN}?apiKey=${apiKey}&rid=${rid}&vid=${vid}&startTimestamp=${startTimestamp}&projectId=${projectId}`;

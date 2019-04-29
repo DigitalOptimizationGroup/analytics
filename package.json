@@ -1,8 +1,8 @@
 {
   "name": "@digitaloptgroup/analytics",
-  "version": "0.0.1-pre-release.4",
+  "version": "0.0.1-pre-release.1",
   "description": "Analytics library for Digital Optimization Group's Headless A/B Testing CMS",
-  "repository": "https://github.com/DigitalOptGroup/analytics.git",
+  "repository": "https://github.com/DigitalOptimizationGroup/analytics.git",
   "main": "./lib/index.js",
   "scripts": {
     "test": "jest --watch",
