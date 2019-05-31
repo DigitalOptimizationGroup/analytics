@@ -1,6 +1,6 @@
 {
   "name": "@digitaloptgroup/analytics",
-  "version": "0.0.1-pre-release.03",
+  "version": "0.0.1-pre-release.06",
   "description": "Analytics library for Digital Optimization Group's Headless A/B Testing CMS",
   "repository": "https://github.com/DigitalOptimizationGroup/analytics.git",
   "main": "dist/commonjs/index.js",
@@ -9,14 +9,13 @@
     "test": "jest --watch",
     "watch": "tsc --watch",
     "webpack": "webpack",
-    "build": "rimraf dist && npm run build:commonjs && npm run build:es",
-    "build:commonjs": "NODE_ENV=commonjs babel src --out-dir dist/commonjs --extensions '.ts'",
-    "build:es": "NODE_ENV=es babel src --out-dir dist/es --extensions '.ts'"
+    "build": "rimraf dist && rollup -c"
   },
   "author": "Digital Optimization Group LLC",
   "license": "MIT",
   "dependencies": {
     "intersection-observer": "^0.5.1",
+    "rollup-plugin-typescript2": "^0.21.1",
     "rxjs": "^6.4.0"
   },
   "devDependencies": {
@@ -39,6 +38,8 @@
     "@types/jest": "^24.0.11",
     "jest": "^24.7.1",
     "mock-socket": "^8.0.5",
+    "rollup": "^1.12.5",
+    "rollup-plugin-babel": "^4.3.2",
     "ts-jest": "^24.0.2",
     "ts-loader": "^5.3.3",
     "tslint": "^5.11.0",
