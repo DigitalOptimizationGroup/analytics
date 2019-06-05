@@ -141,6 +141,7 @@ export const observedElementMetadata = new WeakMap<Element, TrackingData>();
 
 export const initIntersectionObserver = () => {
   const intersectionCallback = (entries: Array<IntersectionObserverEntry>) => {
+    console.error("intersection triggered");
     entries.forEach(entry => {
       const dataset = observedElementMetadata.get(entry.target);
 
