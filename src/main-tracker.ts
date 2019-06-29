@@ -2,7 +2,8 @@ import { merge, timer, fromEvent } from "rxjs";
 import {
   variationsInViewport$,
   initIntersectionObserver,
-  VariationsInViewport
+  VariationsInViewport,
+  ExposureTracking
 } from "./events/variationsInViewport";
 import { mouseDistance$, MouseDistance } from "./events/mouseDistance";
 import { pageScrolling$, PageScrolling } from "./events/pageScrolling";
@@ -51,10 +52,17 @@ export type Action =
   | VariationMousedown
   | VariationsInViewport;
 
+export type Trackers = {
+  pathChange: (pathname: string) => void;
+  outcome: (outcome: string, metadata: Metadata[]) => void;
+  caughtError: (metadata: CaughtErrorMetadata[]) => void;
+  initIntersectionObserver: () => ExposureTracking;
+};
+
 export const initTracker = (
   { projectId, vid, rid, startTimestamp, apiKey }: Config,
   WS_FQDN = "wss://analytics.digitaloptgroup.com" // this should havea version - analytics-v1.digitaloptgroup.com
-) => {
+): Trackers => {
   // set up socket url
   const SOCKET_URL = `${WS_FQDN}?apiKey=${apiKey}&rid=${rid}&vid=${vid}&startTimestamp=${startTimestamp}&projectId=${projectId}`;
   const BUFFER_SIZE = 1000;
@@ -103,7 +111,7 @@ export const initTracker = (
       tap({
         next: (x: any) => {
           if (process.env.NODE_ENV !== "production") {
-            console.log("From server", x);
+            // console.log("From server", x);
           }
         },
         complete() {
@@ -139,7 +147,7 @@ export const initTracker = (
     });
 
   return {
-    pathChange: (pathname: string) =>
+    pathChange: pathname =>
       event$.next({
         type: "PATH_CHANGE",
         pathname,

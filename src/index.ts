@@ -1,1 +1,1 @@
-export { initTracker } from "./main-tracker";
+export { initTracker, Trackers } from "./main-tracker";

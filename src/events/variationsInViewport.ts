@@ -139,9 +139,13 @@ type TrackingData = {
 
 export const observedElementMetadata = new WeakMap<Element, TrackingData>();
 
-export const initIntersectionObserver = () => {
+export type ExposureTracking = {
+  observe: (element: HTMLElement, tracking: TrackingData) => void;
+  unobserve: (element: HTMLElement) => void;
+};
+
+export const initIntersectionObserver = (): ExposureTracking => {
   const intersectionCallback = (entries: Array<IntersectionObserverEntry>) => {
-    console.error("intersection triggered");
     entries.forEach(entry => {
       const dataset = observedElementMetadata.get(entry.target);
 
@@ -164,22 +168,22 @@ export const initIntersectionObserver = () => {
     observerOptions
   );
 
-  const observe = (element: HTMLElement, _ab: TrackingData) => {
+  const observe = (element: HTMLElement, tracking: TrackingData) => {
     if (
-      !_ab ||
-      !_ab.releaseId ||
-      !_ab.featureId ||
-      !_ab.variationId ||
-      !_ab.exposureId
+      !tracking ||
+      !tracking.releaseId ||
+      !tracking.featureId ||
+      !tracking.variationId ||
+      !tracking.exposureId
     ) {
       throw Error(
         `Observe must be called with proper tracking. The element was ${
           element.innerHTML
-        } and tracking was ${JSON.stringify(_ab)}`
+        } and tracking was ${JSON.stringify(tracking)}`
       );
     }
 
-    observedElementMetadata.set(element, _ab);
+    observedElementMetadata.set(element, tracking);
     intersectionObserver.observe(element);
   };
 
