@@ -1,6 +1,6 @@
 {
   "name": "@digitaloptgroup/analytics",
-  "version": "0.0.1-pre-release.08",
+  "version": "0.0.1-pre-release.09",
   "description": "Analytics library for Digital Optimization Group's Headless A/B Testing CMS",
   "repository": "https://github.com/DigitalOptimizationGroup/analytics.git",
   "main": "dist/commonjs/index.js",

@@ -4,8 +4,6 @@ This library is made to work with Digital Optimization Group's Headless A/B test
 
 At `15kb` gzipped it's lighter than Google Analytics.
 
-If you are using `React` or `Preact` you may prefer to use `@digitaloptgroup/react-analytics` or `@digitaloptgroup/preact-analytics`, which provide convenient `React` and `Preact` wrappers over this library.
-
 ### What's tracked by this library?
 
 - a/b test variations actually appearing in a user's viewport (not just assignment)
@@ -28,13 +26,13 @@ All events are placed on a timeline so that outcomes can be properly attributed 
 npm
 
 ```js
-npm install --save @digitaloptgroup/js-analytics
+npm install --save @digitaloptgroup/analytics
 ```
 
 yarn
 
 ```js
-yarn add @digitaloptgroup/js-analytics
+yarn add @digitaloptgroup/analytics
 ```
 
 #### Initialze
@@ -97,43 +95,7 @@ caughtError(metadata);
 
 ### Observe / Unobserve Variation
 
-`initIntersectionObserver` provides viewport tracking for a/b test variations. It is intended to be used with Digital Optimization Group's Headless CMS. To properly track a dom element you must add `dataset` attributes to the dom element.
-
-```html
-<div
-    id="mydiv"
-    data-releaseid="release_id_123"
-    data-featureid="feature_id_123"
-    data-variationid="variation_id_abc"
-    data-exposureid="exposure_id_453"
-    data-position="1"
->
-    {title}
-</div>
-```
-
-You must initialize the `IntersectionObserver` by calling `initIntersectionObserver()`. This should only happen once.
-
-```js
-const { observe, unobserve } = getIntersectionObserver();
-```
-
-You can then track multiple dom elements using `observe` as follows:
-
-```js
-const domElement = document.getElementById("mydiv");
-observe(domElement);
-
-const domElement2 = document.getElementById("mydiv2");
-observe(domElement2);
-```
-
-The variation can later be unobserved by passing the dom element into `unobserve` as follows:
-
-```js
-const domElement = document.getElementById("mydiv");
-unobserve(domElement);
-```
+`initIntersectionObserver` provides viewport tracking for a/b test variations. It is intended to be used with Digital Optimization Group's Headless CMS.
 
 ### Automatically Tracked Events
 
