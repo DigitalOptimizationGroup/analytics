@@ -1,5 +1,7 @@
 # Digital Optimization Group - Javascript Analytics
 
+https://docs.digitaloptgroup.com/analytics/getting-started
+
 This library is made to work with Digital Optimization Group's Headless A/B testing CMS. It provides a range of event tracking automatically, plus it provides a public api to allow custom event tracking.
 
 At `15kb` gzipped it's lighter than Google Analytics.
